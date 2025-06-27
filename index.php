@@ -10,7 +10,7 @@ $page = $_GET["page"] ?? "home";
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PixelPartners</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/css/styles.css" rel="stylesheet">
+	<link href="assets/css/styles.css?v=<?php echo filemtime('assets/css/styles.css'); ?>" rel="stylesheet">
 </head>
 <body>
 	<?php include_once "header.php" ?>
