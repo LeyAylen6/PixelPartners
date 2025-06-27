@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2025 a las 03:10:34
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jun 27, 2025 at 01:49 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,15 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `parcial_2`
+-- Database: `parcial_2`
 --
-CREATE DATABASE IF NOT EXISTS `parcial_2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `parcial_2`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE `company` (
@@ -36,70 +34,163 @@ CREATE TABLE `company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `name`, `logo`) VALUES
 (1, 'Coca Cola', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fgraffica.info%2Fcual-es-la-historia-del-logo-de-coca-cola%2F&psig=AOvVaw3Pr7xQ2UVKe8g6PNa4S-UN&ust=1748653037928000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPikjLX-yY0DFQAAAAAdAAAAABAX'),
 (2, 'Uber', 'https://cdn-icons-png.flaticon.com/512/732/732135.png'),
 (3, 'Pedidos Ya', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pedidosya.com.ar%2F&psig=AOvVaw2TmyExSDziCZPvYNVZOREh&ust=1748653126012000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMDvrNf-yY0DFQAAAAAdAAAAABAE'),
-(4, 'Mercado Libre', 'https://www.expoknews.com/wp-content/uploads/2020/03/1200px-MercadoLibre.svg-1.png');
+(4, 'Mercado Libre', 'https://www.expoknews.com/wp-content/uploads/2020/03/1200px-MercadoLibre.svg-1.png'),
+(5, 'Henry', 'https://assets.soyhenry.com/LOGO-REDES-01_og.jpg'),
+(6, 'Da Vinci', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGQKOjqdGra0m0HpKzdF3VSA3Ck0s-wp3Gw&s');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `project`
+-- Table structure for table `project`
 --
 
 CREATE TABLE `project` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `developer` varchar(255) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `link` varchar(255) DEFAULT NULL
+  `link` varchar(255) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `project`
+-- Dumping data for table `project`
 --
 
-INSERT INTO `project` (`id`, `name`, `developer`, `description`, `image`, `link`) VALUES
-(1, 'Rick and Morty App', 'Leila Salguero', 'Single Page con temática de Rick and Morty. Permite buscar personajes al azar, por id, agregarlos a favoritos, aplicar filtros, ordenamientos y eliminar personajes buscados. Las Técnologias que se utilizaron para crear esta página fueron React, Redux, Html, Css, Node Js, Express, Sequelize y PostgreSQL.', 'https://www.youtube.com/watch?v=A5jKQXZmlPg', 'https://rick-and-morty-one-tan.vercel.app/'),
-(5, 'Sushi Chat Bot', 'Leila Salguero', 'Sushi Chatbot es un proyecto que implementa un chatbot para un restaurante de sushi, utilizando inteligencia artificial de Cohere para responder preguntas frecuentes de manera más interactiva y dinámica. Los usuarios pueden ver el menú, realizar pedidos y consultar dudas frecuentes. El chatbot es capaz de entender consultas relacionadas con pedidos, ingredientes, disponibilidad, entre otros. Está construido con Node.js, React, MongoDB. Además, el modelo de Cohere se integra para ofrecer respuestas más naturales y precisas a los usuarios.', 'https://www.youtube.com/watch?time_continue=89&v=qpLnSc69CQQ&embeds_referring_euri=https%3A%2F%2Fleila-salguero.vercel.app%2F&source_ve_path=MzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMjg2NjY', 'https://sushi-chatbot.vercel.app/'),
-(6, 'Poke Page', 'Ignacio Gimenez', 'Pokedex en la que puedes revisar todos los pokemons con sus detalles, las distintas pokedex, regiones y peliculas de pokemon', 'https://ignacio-gimenez.vercel.app/static/media/PokePage.0af939a3709d9ad557d4.png', 'https://nacho077.github.io/');
+INSERT INTO `project` (`id`, `name`, `description`, `image`, `link`, `company_id`) VALUES
+(1, 'Leila\'s Portfolio', 'Aplicación web construida como portfolio profesional. Implementa prácticas de desarrollo moderno como diseño responsive, enrutamiento dinámico y carga optimizada. Organiza información personal y proyectos en una estructura clara, escalable y fácil de mantener.', 'https://media.licdn.com/dms/image/v2/D4D22AQFQFEIikN3OCA/feedshare-shrink_800/feedshare-shrink_800/0/1690499052910?e=1753920000&v=beta&t=422ImdD2zr-a_VlkthZBuBybRCNJgLkSXhmfkG1UrsI', 'https://leila-salguero.vercel.app/', NULL),
+(2, 'Ignacio\'s Portfolio', 'Portfolio personal desarrollado para presentar experiencia, habilidades y proyectos. Enfocado en Backend armado para manejo dinámico de proyectos y diseño modular pensado para facilitar mantenimiento y futuras integraciones', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/Portfolio.png', 'https://ignacio-gimenez.vercel.app/', NULL),
+(3, 'TutorIA', 'Aplicación educativa que usa inteligencia artificial para personalizar el aprendizaje, permitiendo a los usuarios avanzar a su propio ritmo con recomendaciones y actividades interactivas.', 'https://private-user-images.githubusercontent.com/68043239/458647638-575000b8-6b0a-471c-bba6-9a4067767e79.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTA4', NULL, 5),
+(4, 'Rick & Morty', 'Single Page con temática de Rick and Morty. Permite buscar personajes al azar, por id, agregarlos a favoritos, aplicar filtros, ordenamientos y eliminar personajes buscados.', 'https://github.com/LeyAylen6/Rick-Morty/raw/main/assets/login.gif', 'https://rick-and-morty-one-tan.vercel.app/', 5),
+(5, 'PokePage', 'Pokedex en la que puedes revisar todos los pokemons con sus detalles, las distintas pokedex, regiones y peliculas de pokemon', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/PokePage.png', 'https://nacho077.github.io/', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Índices para tablas volcadas
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `name` varchar(32) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `image` varchar(256) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`name`, `email`, `image`, `id`) VALUES
+('Leila Salguero', 'leiisalguero@gmail.com', 'https://avatars.githubusercontent.com/u/75590409?v=4', 1),
+('Ignacio Gimenez', 'ignaciogimenez70@gmail.com', 'https://ignacio-gimenez.vercel.app/static/media/profile.6c1887699f4fa9a49bb7.png', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_project`
+--
+
+CREATE TABLE `user_project` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_project`
+--
+
+INSERT INTO `user_project` (`id`, `user_id`, `project_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 1, 3),
+(4, 2, 3),
+(5, 1, 4),
+(6, 2, 5);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `company`
+-- Indexes for table `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `project`
+-- Indexes for table `project`
 --
 ALTER TABLE `project`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_company_id` (`company_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Indexes for table `user_project`
+--
+ALTER TABLE `user_project`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_id` (`user_id`),
+  ADD KEY `fk_project_id` (`project_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `company`
+-- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `project`
+-- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_project`
+--
+ALTER TABLE `user_project`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `project`
+--
+ALTER TABLE `project`
+  ADD CONSTRAINT `fk_company_id` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`);
+
+--
+-- Constraints for table `user_project`
+--
+ALTER TABLE `user_project`
+  ADD CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
