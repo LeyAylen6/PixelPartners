@@ -10,12 +10,22 @@ class Project {
     public $link;
 
     public function findAll($connection) {
-        $query = "SELECT DISTINCT p.*, u.name as developer, u.image as user_image 
+        $query = "SELECT DISTINCT p.*, u.name as developer, u.image as user_image, u.rol as user_rol
                   FROM project p
                   LEFT JOIN user_project up ON p.id = up.project_id
                   LEFT JOIN user u ON up.user_id = u.id
                   ORDER BY p.id, u.name";
         
+        return $this->parseProjects($connection, $query);
+    }
+
+    public function findWithPagination($connection, $limit, $offset) {
+        $query = "SELECT p.*, u.name as developer, u.image as user_image, u.rol as user_rol 
+                  FROM project p
+                  LEFT JOIN user_project up ON p.id = up.project_id
+                  LEFT JOIN user u ON up.user_id = u.id
+                  LIMIT $limit OFFSET $offset";
+
         return $this->parseProjects($connection, $query);
     }
 
@@ -29,7 +39,7 @@ class Project {
                 $this->id = mysqli_insert_id($connection);
 				$query = "INSERT INTO user_project (id, user_id, project_id) VALUES ";
 
-				foreach ($project->developers as $developer) {
+				foreach ($this->developers as $developer) {
 					$query = $query . "(NULL, " . $developer->id . ", " . $this->id . ")";
 				}
             
@@ -45,12 +55,6 @@ class Project {
 		} catch (Exception $e) {
 			throw $e;
 		}
-    }
-
-    public function findWithPagination($connection, $limit, $offset) {
-        $query = "SELECT * FROM project LIMIT $limit OFFSET $offset";
-
-        return $this->parseProjects($connection, $query);
     }
 
     private function parseProjects($connection, $query) {
@@ -80,6 +84,7 @@ class Project {
                     $user = new User();
                     $user->name = $row["developer"];
                     $user->image = $row["user_image"];
+                    $user->rol = $row["user_rol"];
                     $currentProject->developers[] = $user;
                 }
             }
