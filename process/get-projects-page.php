@@ -3,7 +3,7 @@
 require_once 'class/Project.php';
 
 function getProjectsPage($connection, $page) {
-    $limit = 3;
+    $limit = 6;
     $offset = ($page - 1) * $limit;
 
     $project = new Project();
