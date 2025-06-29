@@ -3,11 +3,23 @@
 class User {
     public $name;
     public $image;
+    public $rol;
 
-    public static function findAll($connection) {
-        $query = "SELECT name, image FROM user ORDER BY name";
+    public function findAll($connection) {
+        $query = "SELECT * FROM user ORDER BY name";
         $users = [];
 
+        return $this->parseUsers($connection, $query);
+    }
+
+    public function findByName($connection, $name) {
+        $query = "SELECT * FROM user WHERE name = '$name'";
+        $users = [];
+
+        return $this->parseUsers($connection, $query);
+    }
+
+    private function parseUsers($connection, $query) {
         try {
             $response = mysqli_query($connection, $query);
 
@@ -15,6 +27,7 @@ class User {
                 $user = new User();
                 $user->name = $row["name"];
                 $user->image = $row["image"];
+                $user->rol = $row["rol"];
                 $users[] = $user;
             }
 
