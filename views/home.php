@@ -78,9 +78,29 @@ $currentPage = isset($_GET['project_page']) ? (int)$_GET['project_page'] : 1;
                         <div class="card h-100 border-0 shadow-sm project-card">
                             <img src="<?= htmlspecialchars($project->image) ?>" class="card-img-top project-image" alt="<?= htmlspecialchars($project->name) ?>" loading="lazy">
                             <div class="card-body d-flex flex-column">
-                                <h3 class="h5 fw-bold mb-3"><?= htmlspecialchars($project->name) ?></h3>
-                                <p class="text-muted flex-grow-1"><?= htmlspecialchars($project->description) ?></p>
-                                <p class="text-muted small mb-3"><strong>Desarrollador:</strong> <?= htmlspecialchars($project->developers) ?></p>
+                                <h3 class="h5 fw-bold mb-3">
+                                    <?= htmlspecialchars($project->name) ?>
+                                </h3>
+                                <p class="text-muted flex-grow-1">
+                                    <?= htmlspecialchars($project->description) ?>
+                                </p>
+                                <h4 class="h6 fw-bold mb-3">Desarrolladores</h4>
+                                <ul>
+                                    <?php
+
+                                    if($project->developers): 
+                                        foreach ($project->developers as $developer): ?>
+                                            <li class="d-flex align-items-center">
+                                                <img src="<?= htmlspecialchars($developer->image) ?>" alt="<?= htmlspecialchars($developer->name) ?>" class="rounded-circle" width="50" height="50">
+                                                <span class="ms-2">
+                                                    <?= htmlspecialchars($developer->name) . " (" . htmlspecialchars($developer->rol) . ")" ?>
+                                                </span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <li>No han sido definidos los desarrolladores</li>
+                                    <?php endif; ?>
+                                </ul>
                                 <a href="<?= htmlspecialchars($project->link) ?>" class="btn btn-primary align-self-start" target="_blank">
                                     Ver Proyecto <i class="bi bi-arrow-right ms-2"></i>
                                 </a>
