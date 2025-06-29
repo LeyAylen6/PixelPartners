@@ -10,24 +10,24 @@ class Company {
     $companies = [];
 
     try {
-      $response = mysqli_query($connection, $query);
-      $response = mysqli_fetch_assoc($response);
-
-      while ($response){
-        $company = new Company();
-        $company->id = $response["id"];
-        $company->name = $response["name"];
-        $company->logo = $response["logo"];
-
-        array_push($companies, $company);
+      $result = mysqli_query($connection, $query);
+      
+      if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          $company = new Company();
+          $company->id = $row["id"];
+          $company->name = $row["name"];
+          $company->logo = $row["logo"];
+          $companies[] = $company;
+        }
+        mysqli_free_result($result);
       }
-
+      
       return $companies;
-    
+      
     } catch (Exception $e) {
+      error_log("Error en Company::findAll: " . $e->getMessage());
       throw $e;
     }
   }
 }
-
-?> 

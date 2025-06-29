@@ -23,40 +23,8 @@
       </div>
     </form>
     <div id="lista-proyectos" class="mb-4">
-      <!-- Proyectos agregados se mostrarán aquí -->
     </div>
     <button type="submit" form="form-trabaja" class="btn btn-primary btn-lg">Enviar postulación</button>
   </article>
 </section>
-<script>
-// Manejo de proyectos locales
-const proyectos = [];
-const inputProyecto = document.getElementById('proyecto');
-const btnAgregar = document.getElementById('agregar-proyecto');
-const listaProyectos = document.getElementById('lista-proyectos');
 
-function renderProyectos() {
-  listaProyectos.innerHTML = '';
-  if (proyectos.length > 0) {
-    const ul = document.createElement('ul');
-    ul.className = 'list-group mb-3';
-    proyectos.forEach((p, i) => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item';
-      li.textContent = p;
-      ul.appendChild(li);
-    });
-    listaProyectos.appendChild(ul);
-  }
-}
-
-btnAgregar.addEventListener('click', function() {
-  const val = inputProyecto.value.trim();
-  if (val) {
-    proyectos.unshift(val);
-    renderProyectos();
-    inputProyecto.value = '';
-    inputProyecto.focus();
-  }
-});
-</script>

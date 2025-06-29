@@ -11,6 +11,7 @@ $page = $_GET["page"] ?? "home";
 	<title>PixelPartners</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="assets/css/styles.css?v=<?php echo filemtime('assets/css/styles.css'); ?>" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body>
 	<?php include_once "header.php" ?>
@@ -24,7 +25,10 @@ $page = $_GET["page"] ?? "home";
 			}  
 		?>
 	</main>
+
+	<?php include_once "footer.php" ?>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-<?php include('footer.php'); ?>
+

@@ -1,4 +1,22 @@
-/* Trusted Companies Section */
+/* Bootstrap Overrides */
+:root {
+  --bs-primary: #6a45b8;
+  --bs-primary-rgb: 71, 186, 204;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #6a45b8;
+  --bs-btn-hover-border-color: #5f3da8;
+  --bs-btn-active-bg: #5f3da8;
+  --bs-btn-active-border-color: #55369a;
+}
+
+.services-gradient-bg {
+    background: linear-gradient(to bottom, #b9a5f9, #ffffff);
+}
+
 .trusted-companies {
   margin-top: 3.5rem;
   width: 100%;
@@ -313,6 +331,30 @@ body {
   }
 }
 
+/* --- ESTILOS DE TÍTULOS --- */
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #7c3aed;
+  font-weight: 900;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  border-radius: 2px;
+}
+
 /* --- PROYECTOS DESTACADOS --- */
 .projects {
   width: 100%;
@@ -332,7 +374,25 @@ body {
   padding-bottom: 0.8rem;
 }
 
-.projects > h2::after {
+/* Aplicar estilos de section-title a los títulos de proyectos */
+.projects > h2,
+.about-projects-title,
+.home-projects h2,
+.services-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #7c3aed;
+  font-weight: 900;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.projects > h2::after,
+.about-projects-title::after,
+.home-projects h2::after,
+.services-title::after {
   content: '';
   position: absolute;
   bottom: 0;
