@@ -9,5 +9,9 @@ function getProjectsPage($connection, $page) {
     $project = new Project();
     $projects = $project->findWithPagination($connection, $limit, $offset);
     
-    return $projects;
+    return [
+        "results" => $projects,
+        "has_prev" => $page > 1,
+        "has_next" => $project->count($connection) > $page * $limit
+    ];
 }

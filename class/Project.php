@@ -20,13 +20,22 @@ class Project {
     }
 
     public function findWithPagination($connection, $limit, $offset) {
-        $query = "SELECT p.*, u.name as developer, u.image as user_image, u.rol as user_rol 
+        $query = "SELECT DISTINCT p.*,
+                    GROUP_CONCAT(CONCAT(u.name, '|', u.image, '|', u.rol) 
+                    ORDER BY u.name SEPARATOR '||') as developers_data
                   FROM project p
                   LEFT JOIN user_project up ON p.id = up.project_id
                   LEFT JOIN user u ON up.user_id = u.id
+                  GROUP BY p.id
                   LIMIT $limit OFFSET $offset";
 
         return $this->parseProjects($connection, $query);
+    }
+
+    public function count($connection) {
+        $query = "SELECT COUNT(*) as count FROM project";
+
+        return mysqli_fetch_assoc(mysqli_query($connection, $query))["count"];
     }
 
     public function save($connection) {
@@ -59,38 +68,30 @@ class Project {
 
     private function parseProjects($connection, $query) {
         $projects = [];
-        $currentProjectId = null;
-        $currentProject = null;
 
         try {
             $response = mysqli_query($connection, $query);
 
             while ($row = mysqli_fetch_assoc($response)) {
-                if ($row["id"] !== $currentProjectId) {
-                    if ($currentProject !== null) {
-                        $projects[] = $currentProject;
+                $project = new Project();
+                $project->id = $row["id"];
+                $project->name = $row["name"];
+                $project->description = $row["description"];
+                $project->image = $row["image"];
+                $project->link = $row["link"];
+                if ($row["developers_data"]) {
+                    $developers = explode('||', $row["developers_data"]);
+                    foreach ($developers as $developerData) {
+                        list($name, $image, $rol) = explode('|', $developerData);
+                        $user = new User();
+                        $user->name = $name;
+                        $user->image = $image;
+                        $user->rol = $rol;
+                        $project->developers[] = $user;
                     }
-                    
-                    $currentProject = new Project();
-                    $currentProject->id = $row["id"];
-                    $currentProject->name = $row["name"];
-                    $currentProject->description = $row["description"];
-                    $currentProject->image = $row["image"];
-                    $currentProject->link = $row["link"];
-                    $currentProjectId = $row["id"];
                 }
-                
-                if ($row["developer"] !== null && $row["user_image"] !== null) {
-                    $user = new User();
-                    $user->name = $row["developer"];
-                    $user->image = $row["user_image"];
-                    $user->rol = $row["user_rol"];
-                    $currentProject->developers[] = $user;
-                }
-            }
 
-            if ($currentProject !== null) {
-                $projects[] = $currentProject;
+                $projects[] = $project;
             }
 
             return $projects;
