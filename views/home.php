@@ -80,12 +80,21 @@ $currentPage = isset($_GET['project_page']) ? (int)$_GET['project_page'] : 1;
                                 <img src="<?= htmlspecialchars($project->image) ?>" class="img-fluid object-fit-cover w-100 h-100" alt="<?= htmlspecialchars($project->name) ?>" loading="lazy">
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h3 class="h5 fw-bold mb-3">
-                                    <span class="text-secondary fs-4">
-                                        ★
-                                    </span>
-                                    <?= htmlspecialchars($project->name) ?>
-                                </h3>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h3 class="h5 fw-bold">
+                                        <span class="text-secondary fs-4">
+                                            ★
+                                        </span>
+                                        <?= htmlspecialchars($project->name) ?>
+                                    </h3>
+                                    <?php if ($project->company_logo): ?>
+                                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                            <img src="<?= htmlspecialchars($project->company_logo) ?>" 
+                                                 style="width: 60px; height: 60px; object-fit: contain;"
+                                                 alt="Logo de la empresa">
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                                 <p class="text-muted flex-grow-1">
                                     <?= htmlspecialchars($project->description) ?>
                                 </p>

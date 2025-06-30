@@ -11,12 +11,14 @@ class Project {
     public $company_logo;
 
     public function findAll($connection) {
-        $query = "SELECT DISTINCT p.*, u.name as developer, u.image as user_image, u.rol as user_rol, c.logo as company_logo
+        $query = "SELECT DISTINCT p.*, c.logo as company_logo,
+                    GROUP_CONCAT(CONCAT(u.name, '|', u.image, '|', u.rol) 
+                    ORDER BY u.name DESC SEPARATOR '||') as developers_data
                   FROM project p
                   LEFT JOIN user_project up ON p.id = up.project_id
                   LEFT JOIN user u ON up.user_id = u.id
                   LEFT JOIN company c ON p.company_id = c.id
-                  ORDER BY p.id, u.name";
+                  ORDER BY p.id DESC";
         
         return $this->parseProjects($connection, $query);
     }
@@ -24,12 +26,12 @@ class Project {
     public function findWithPagination($connection, $limit, $offset) {
         $query = "SELECT DISTINCT p.*, c.logo as company_logo,
                     GROUP_CONCAT(CONCAT(u.name, '|', u.image, '|', u.rol) 
-                    ORDER BY u.name SEPARATOR '||') as developers_data
+                    ORDER BY u.name DESC SEPARATOR '||') as developers_data
                   FROM project p
                   LEFT JOIN user_project up ON p.id = up.project_id
                   LEFT JOIN user u ON up.user_id = u.id
                   LEFT JOIN company c ON p.company_id = c.id
-                  GROUP BY p.id
+                  GROUP BY p.id DESC
                   LIMIT $limit OFFSET $offset";
 
         return $this->parseProjects($connection, $query);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2025 at 12:07 AM
+-- Generation Time: Jun 30, 2025 at 04:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,9 +42,9 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`id`, `name`, `logo`) VALUES
-(1, 'Coca Cola', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fgraffica.info%2Fcual-es-la-historia-del-logo-de-coca-cola%2F&psig=AOvVaw3Pr7xQ2UVKe8g6PNa4S-UN&ust=1748653037928000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPikjLX-yY0DFQAAAAAdAAAAABAX'),
+(1, 'Coca Cola', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyk_jri6J5Qz0RsTpG_ZOIQDlLeckY7ZU1g&s'),
 (2, 'Uber', 'https://cdn-icons-png.flaticon.com/512/732/732135.png'),
-(3, 'Pedidos Ya', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pedidosya.com.ar%2F&psig=AOvVaw2TmyExSDziCZPvYNVZOREh&ust=1748653126012000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMDvrNf-yY0DFQAAAAAdAAAAABAE'),
+(3, 'Pedidos Ya', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRhTYd_OViFVl-ObgNR6ftmQOpynyZx5bbAA&s'),
 (4, 'Mercado Libre', 'https://www.expoknews.com/wp-content/uploads/2020/03/1200px-MercadoLibre.svg-1.png'),
 (5, 'Henry', 'https://assets.soyhenry.com/LOGO-REDES-01_og.jpg'),
 (6, 'Da Vinci', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGQKOjqdGra0m0HpKzdF3VSA3Ck0s-wp3Gw&s');
@@ -70,15 +70,16 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`id`, `name`, `description`, `image`, `link`, `company_id`) VALUES
-(1, 'Leila\'s Portfolio', 'Aplicación web construida como portfolio profesional. Implementa prácticas de desarrollo moderno como diseño responsive, enrutamiento dinámico y carga optimizada. Organiza información personal y proyectos en una estructura clara, escalable y fácil de mantener.', 'https://media.licdn.com/dms/image/v2/D4D22AQFQFEIikN3OCA/feedshare-shrink_800/feedshare-shrink_800/0/1690499052910?e=1753920000&v=beta&t=422ImdD2zr-a_VlkthZBuBybRCNJgLkSXhmfkG1UrsI', 'https://leila-salguero.vercel.app/', NULL),
-(2, 'Ignacio\'s Portfolio', 'Portfolio personal desarrollado para presentar experiencia, habilidades y proyectos. Enfocado en Backend armado para manejo dinámico de proyectos y diseño modular pensado para facilitar mantenimiento y futuras integraciones', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/Portfolio.png', 'https://ignacio-gimenez.vercel.app/', NULL),
-(3, 'TutorIA', 'Aplicación educativa que usa inteligencia artificial para personalizar el aprendizaje, permitiendo a los usuarios avanzar a su propio ritmo con recomendaciones y actividades interactivas.', 'https://private-user-images.githubusercontent.com/68043239/458647638-575000b8-6b0a-471c-bba6-9a4067767e79.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTA4', NULL, 5),
-(4, 'Rick & Morty', 'Single Page con temática de Rick and Morty. Permite buscar personajes al azar, por id, agregarlos a favoritos, aplicar filtros, ordenamientos y eliminar personajes buscados.', 'https://github.com/LeyAylen6/Rick-Morty/raw/main/assets/login.gif', 'https://rick-and-morty-one-tan.vercel.app/', 5),
-(5, 'PokePage', 'Pokedex en la que puedes revisar todos los pokemons con sus detalles, las distintas pokedex, regiones y peliculas de pokemon', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/PokePage.png', 'https://nacho077.github.io/', NULL),
-(6, 'Sushi Chatbot', 'Proyecto que implementa un chatbot para un restaurante de sushi, utilizando inteligencia artificial de Cohere para responder preguntas frecuentes de manera más interactiva y dinámica', 'https://github.com/LeyAylen6/sushi-chatbot/raw/main/client/src/assets/home.jpeg', 'https://sushi-chatbot.vercel.app/', NULL),
-(7, 'Henry Videogames', ' En este proyecto puedes ver más de 100 juegos en diferentes páginas, buscar juegos por nombre, ver su descripción, filtrarlos por ubicación, ordenarlos en orden Ascendente, Descendente o por su Rating.', 'https://github.com/LeyAylen6/Videogames/raw/main/assets/landing.gif', 'https://henry-videogames-zeta.vercel.app/', 5),
-(8, 'Paycash - People', ' Implementa una API RESTful para gestionar un catálogo de personas, permitiendo realizar operaciones CRUD.', 'https://github.com/LeyAylen6/paycash/raw/main/client/assets/paycash-people.jpeg', 'https://paycash-seven.vercel.app/', NULL),
-(9, 'Henry World Web', 'Version web de Henry World en la que los administradores y profesores pueden realizar cambios de una manera comoda y con mayor rapidez.', 'https://ignacio-gimenez.vercel.app/static/media/Henry-World-Web.7f3e6e3cca52bad067ba.png', 'https://henry-app.vercel.app/', 5);
+(1, 'Sushi Chatbot', 'Proyecto que implementa un chatbot para un restaurante de sushi, utilizando inteligencia artificial de Cohere para responder preguntas frecuentes de manera más interactiva y dinámica', 'https://github.com/LeyAylen6/sushi-chatbot/raw/main/client/src/assets/home.jpeg', 'https://sushi-chatbot.vercel.app/', NULL),
+(2, 'Paycash - People', ' Implementa una API RESTful para gestionar un catálogo de personas, permitiendo realizar operaciones CRUD.', 'https://github.com/LeyAylen6/paycash/raw/main/client/assets/paycash-people.jpeg', 'https://paycash-seven.vercel.app/', NULL),
+(3, 'PokePage', 'Pokedex en la que puedes revisar todos los pokemons con sus detalles, las distintas pokedex, regiones y peliculas de pokemon', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/PokePage.png', 'https://nacho077.github.io/', NULL),
+(4, 'Henry Videogames', ' En este proyecto puedes ver más de 100 juegos en diferentes páginas, buscar juegos por nombre, ver su descripción, filtrarlos por ubicación, ordenarlos en orden Ascendente, Descendente o por su Rating.', 'https://github.com/LeyAylen6/Videogames/raw/main/assets/landing.gif', 'https://henry-videogames-zeta.vercel.app/', 5),
+(5, 'Henry World Web', 'Version web de Henry World en la que los administradores y profesores pueden realizar cambios de una manera comoda y con mayor rapidez.', 'https://ignacio-gimenez.vercel.app/static/media/Henry-World-Web.7f3e6e3cca52bad067ba.png', 'https://henry-app.vercel.app/', 5),
+(6, 'Rick & Morty', 'Single Page con temática de Rick and Morty. Permite buscar personajes al azar, por id, agregarlos a favoritos, aplicar filtros, ordenamientos y eliminar personajes buscados.', 'https://github.com/LeyAylen6/Rick-Morty/raw/main/assets/login.gif', 'https://rick-and-morty-one-tan.vercel.app/', 5),
+(7, 'TutorIA', 'Aplicación educativa que usa inteligencia artificial para personalizar el aprendizaje, permitiendo a los usuarios avanzar a su propio ritmo con recomendaciones y actividades interactivas.', 'https://github.com/user-attachments/assets/575000b8-6b0a-471c-bba6-9a4067767e79', NULL, 5),
+(8, 'Leila\'s Portfolio', 'Aplicación web construida como portfolio profesional. Implementa prácticas de desarrollo moderno como diseño responsive, enrutamiento dinámico y carga optimizada. Organiza información personal y proyectos en una estructura clara, escalable y fácil de mantener.', 'https://media.licdn.com/dms/image/v2/D4D22AQFQFEIikN3OCA/feedshare-shrink_800/feedshare-shrink_800/0/1690499052910?e=1753920000&v=beta&t=422ImdD2zr-a_VlkthZBuBybRCNJgLkSXhmfkG1UrsI', 'https://leila-salguero.vercel.app/', NULL),
+(9, 'Ignacio\'s Portfolio', 'Portfolio personal desarrollado para presentar experiencia, habilidades y proyectos. Enfocado en Backend armado para manejo dinámico de proyectos y diseño modular pensado para facilitar mantenimiento y futuras integraciones', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/Portfolio.png', 'https://ignacio-gimenez.vercel.app/', NULL),
+(10, 'Pixel Partners', 'Un sistema completo para gestionar proyectos tecnológicos, sus equipos de desarrollo y las empresas clientes, con una interfaz moderna y funcional.', 'https://github.com/user-attachments/assets/05c73f61-56ac-4964-89af-46795ca8775c', NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -122,15 +123,17 @@ CREATE TABLE `user_project` (
 
 INSERT INTO `user_project` (`id`, `user_id`, `project_id`) VALUES
 (1, 1, 1),
-(2, 2, 2),
-(3, 1, 3),
-(4, 2, 3),
-(5, 1, 4),
-(6, 2, 5),
-(7, 1, 6),
-(8, 1, 7),
+(2, 1, 2),
+(3, 2, 3),
+(4, 1, 4),
+(5, 2, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 2, 7),
 (9, 1, 8),
-(10, 2, 9);
+(10, 2, 9),
+(11, 1, 10),
+(12, 2, 10);
 
 --
 -- Indexes for dumped tables
@@ -177,7 +180,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -189,7 +192,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_project`
 --
 ALTER TABLE `user_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
