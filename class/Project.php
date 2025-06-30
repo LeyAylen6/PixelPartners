@@ -8,24 +8,27 @@ class Project {
     public $description;
     public $image;
     public $link;
+    public $company_logo;
 
     public function findAll($connection) {
-        $query = "SELECT DISTINCT p.*, u.name as developer, u.image as user_image, u.rol as user_rol
+        $query = "SELECT DISTINCT p.*, u.name as developer, u.image as user_image, u.rol as user_rol, c.logo as company_logo
                   FROM project p
                   LEFT JOIN user_project up ON p.id = up.project_id
                   LEFT JOIN user u ON up.user_id = u.id
+                  LEFT JOIN company c ON p.company_id = c.id
                   ORDER BY p.id, u.name";
         
         return $this->parseProjects($connection, $query);
     }
 
     public function findWithPagination($connection, $limit, $offset) {
-        $query = "SELECT DISTINCT p.*,
+        $query = "SELECT DISTINCT p.*, c.logo as company_logo,
                     GROUP_CONCAT(CONCAT(u.name, '|', u.image, '|', u.rol) 
                     ORDER BY u.name SEPARATOR '||') as developers_data
                   FROM project p
                   LEFT JOIN user_project up ON p.id = up.project_id
                   LEFT JOIN user u ON up.user_id = u.id
+                  LEFT JOIN company c ON p.company_id = c.id
                   GROUP BY p.id
                   LIMIT $limit OFFSET $offset";
 
@@ -79,6 +82,7 @@ class Project {
                 $project->description = $row["description"];
                 $project->image = $row["image"];
                 $project->link = $row["link"];
+                $project->company_logo = $row["company_logo"];
                 if ($row["developers_data"]) {
                     $developers = explode('||', $row["developers_data"]);
                     foreach ($developers as $developerData) {
