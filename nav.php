@@ -1,19 +1,35 @@
-<nav class="main-navbar nav-violet">
-  <div class="nav-inner">
-    <span class="nav-brand">PixelPartners</span>
-    <ul class="nav nav-links">
-      <li class="nav-item">
-        <a class="nav-link nav-btn" href="index.php?page=home">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-btn" href="index.php?page=about">Sobre Nosotros</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-btn" href="index.php?page=request-our-services">Solicita nuestros servicios</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-btn" href="index.php?page=admin-projects">Soy Admin</a>
-      </li>
+<?php
+$navItems = [
+  [
+    'url' => 'home',
+    'text' => 'Inicio'
+  ],
+  [
+    'url' => 'about',
+    'text' => 'Sobre Nosotros'
+  ],
+  [
+    'url' => 'request-our-services',
+    'text' => 'Solicita nuestros servicios'
+  ],
+  [
+    'url' => 'admin-projects',
+    'text' => 'Soy Admin'
+  ]
+];
+?>
+
+<nav class="shadow gradient-to-right-violet py-4">
+  <div class="w-100 d-flex justify-content-evenly align-items-center">
+    <h1 class="display-4 fs-1 text-white letter-spacing-1">PixelPartners</h1>
+    <ul class="list-unstyled">
+      <?php foreach ($navItems as $item): ?>
+        <li class="d-inline">
+          <a class="btn btn-primary nav-item py-3 px-4 mx-4" href="<?= "index.php?page=" . htmlspecialchars($item['url']) ?>">
+            <?= htmlspecialchars($item['text']) ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
     </ul>
   </div>
 </nav>
