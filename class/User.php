@@ -20,15 +20,20 @@ class User {
     }
 
     private function parseUsers($connection, $query) {
+        $users = [];
+        
         try {
             $response = mysqli_query($connection, $query);
-
-            while ($row = mysqli_fetch_assoc($response)) {
-                $user = new User();
-                $user->name = $row["name"];
-                $user->image = $row["image"];
-                $user->rol = $row["rol"];
-                $users[] = $user;
+            
+            if ($response) {
+                while ($row = mysqli_fetch_assoc($response)) {
+                    $user = new User();
+                    $user->id = $row["id"]; 
+                    $user->name = $row["name"];
+                    $user->image = $row["image"];
+                    $user->rol = $row["rol"];
+                    $users[] = $user;
+                }
             }
 
             return $users;

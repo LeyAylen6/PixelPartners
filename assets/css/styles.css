@@ -57,6 +57,12 @@ body {
   background: linear-gradient(to right, var(--bs-primary), #d2c6e6);
 }
 
+.bg-blur {
+  background-color: rgba(0,0,0,0.6); 
+  z-index: 1050; 
+  backdrop-filter: blur(3px);
+}
+
 /* Cards */
 .card {
   box-shadow: 0 10px 20px rgba(0, 0, 0, .2) !important;
@@ -103,3 +109,5 @@ body {
   transform: scale(1.03);
   transition: transform 0.3s ease;
 }
+
+

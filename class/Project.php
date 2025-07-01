@@ -1,5 +1,5 @@
 <?php
-require_once 'class/User.php';
+require_once 'User.php';
 
 class Project {
     public $id;
@@ -44,27 +44,35 @@ class Project {
     }
 
     public function save($connection) {
-        $query = "INSERT INTO project (id, name, description, image, link) VALUES (NULL, '$this->name', '$this->description', '$this->image', '$this->link')";
+        // Escapar valores para prevenir inyección SQL
+        $name = mysqli_real_escape_string($connection, $this->name);
+        $description = mysqli_real_escape_string($connection, $this->description);
+        $image = mysqli_real_escape_string($connection, $this->image);
+        $link = mysqli_real_escape_string($connection, $this->link);
+
+        $query = "INSERT INTO project (name, description, image, link) 
+                 VALUES ('$name', '$description', '$image', '$link')";
         
-		try {
-			$result = mysqli_query($connection, $query);
+        try {
+            $result = mysqli_query($connection, $query);
 
             if ($result) {
                 $this->id = mysqli_insert_id($connection);
-				$query = "INSERT INTO user_project (id, user_id, project_id) VALUES ";
-
-				foreach ($this->developers as $developer) {
-					$query = $query . "(NULL, " . $developer->id . ", " . $this->id . ")";
-				}
-            
-				foreach ($this->developers as $developer) {
-					if ($developer !== reset($this->developers)) {
-						$query .= ", ";
-					}
-					$query .= "(NULL, " . $developer->id . ", " . $this->id . ")";
-				}
-
-				mysqli_query($connection, $query);
+                
+                // Solo si hay desarrolladores para insertar
+                if (!empty($this->developers)) {
+                    $query = "INSERT INTO user_project (user_id, project_id) VALUES ";
+                    $values = [];
+                    
+                    foreach ($this->developers as $developer) {
+                        $values[] = "(" . intval($developer->id) . ", " . intval($this->id) . ")";
+                    }
+                    
+                    if (!empty($values)) {
+                        $query .= implode(", ", $values);
+                        mysqli_query($connection, $query);
+                    }
+                }
             }
 		} catch (Exception $e) {
 			throw $e;

@@ -37,23 +37,25 @@ $new_project_fields = [
         'type' => 'text',
         'id' => 'developers',
         'label' => 'Desarrolladores',
-        'placeholder' => 'Ingrese los desarrolladores del proyecto',
+        'placeholder' => 'Ingrese los nombres separados por comas',
         'error_message' => 'Ingrese al menos un desarrollador.'
     ]
 ];
 
 ?>
 
-<!-- <?php if (isset($_GET["error"])) { ?>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <?= $mensaje ?>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-  <?php } ?>  -->
-
 <section class="w-100 bg-primary-light d-flex align-items-center justify-content-center py-4">
   <article class="p-5 bg-white justify-content-center col-lg-5 col-xl-4 shadow rounded-4 border-0">
     <h2 class="title text-center mb-4">Nuevo proyecto destacado</h2>
+    
+    <?php if ($_GET["error"]) { 
+      include_once 'error-modal.php'; 
+    } ?> 
+
+    <?php if ($_GET["message"]) { 
+      include_once 'success-modal.php'; 
+    } ?> 
+
     <form 
       id="new-user-projects" 
       action="process/post-user-projects.php" 
@@ -73,7 +75,7 @@ $new_project_fields = [
               id="<?= $field['id'] ?>" 
               name="<?= $field['name'] ?>" 
               placeholder="<?= $field['placeholder'] ?>"
-              rows="4" 
+              rows="2" 
               required 
             ></textarea>
             <div class="invalid-feedback">
