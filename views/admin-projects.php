@@ -48,11 +48,11 @@ $new_project_fields = [
   <article class="p-5 bg-white justify-content-center col-lg-5 col-xl-4 shadow rounded-4 border-0">
     <h2 class="title text-center mb-4">Nuevo proyecto destacado</h2>
     
-    <?php if ($_GET["error"]) { 
+    <?php if (isset($_GET["error"])) { 
       include_once 'error-modal.php'; 
     } ?> 
 
-    <?php if ($_GET["message"]) { 
+    <?php if (isset($_GET["message"])) { 
       include_once 'success-modal.php'; 
     } ?> 
 
