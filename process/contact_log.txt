@@ -1,5 +1,0 @@
-Nuevo mensaje de contacto:
-Nombre: sss
-Email: leiisalguero@gmail.com
-Mensaje: sss
------------------------------
