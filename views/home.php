@@ -52,8 +52,8 @@ $currentPage = isset($_GET['project_page']) ? (int)$_GET['project_page'] : 1;
                                 <div class="icon-wrapper mb-3">
                                     <i class="bi <?= $service['icon'] ?> fs-1 text-secondary"></i>
                                 </div>
-                                <h3 class="h5 fw-bold mb-3"><?= htmlspecialchars($service['title']) ?></h3>
-                                <p class="text-muted mb-0"><?= htmlspecialchars($service['description']) ?></p>
+                                <h3 class="h5 fw-bold mb-3"><?= $service['title'] ?></h3>
+                                <p class="text-muted mb-0"><?= $service['description'] ?></p>
                             </div>
                         </div>
                     </div>

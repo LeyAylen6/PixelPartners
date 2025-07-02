@@ -10,7 +10,7 @@
       <p class="mb-3 text-dark text-center w-100">
         <?= $_GET["error"] ?>
       </p>
-      <a href="?page=admin-projects" class="btn btn-sm btn-outline-danger w-25 text-center">
+      <a href="?page=<?= $_GET['page']?>" class="btn btn-sm btn-outline-danger w-25 text-center">
         <i class="bi bi-x-lg me-1"></i> 
         Cerrar
       </a>

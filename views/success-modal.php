@@ -10,7 +10,7 @@
         <p class="mb-3 text-dark text-center w-100">
             <?= $_GET["message"] ?>
         </p>
-        <a href="index.php?page=request-our-services" class="btn btn-sm btn-outline-success w-25 text-center">
+        <a href="index.php" class="btn btn-sm btn-outline-success w-25 text-center">
             <i class="bi bi-x-lg me-1"></i> 
             Cerrar
         </a>

@@ -34,10 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $project->developers = [];
 
         $user = new User();
-
-        $developers = is_array($_POST['developers']) ? $_POST['developers'] : [$_POST['developers']];
-
-        foreach ($developers as $dev_name) {
+        echo '<pre>' . $_POST['developers'] . '</pre>';
+       
+        foreach ($_POST['developers'] as $dev_name) {
             $user_dev = $user->findByName($connection, trim($dev_name));
             if (count($user_dev) === 1) {
                 $project->developers[] = $user_dev[0];
@@ -47,11 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $project->save($connection);
-        header("Location: /Parcial2/index.php?page=admin-projects&message=Proyecto guardado correctamente");
+        header("Location: ../index.php?page=admin-projects&message=Proyecto guardado correctamente");
         exit;
     
     } catch (Exception $e) {
-        header("Location: /Parcial2/index.php?page=admin-projects&error=" . urlencode($e->getMessage()));
+        header("Location: ../index.php?page=admin-projects&error=" . urlencode($e->getMessage()));
         exit;
     }
 }

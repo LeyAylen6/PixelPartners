@@ -9,7 +9,9 @@
     try {
         $connection = new mysqli($server, $user, $password, $dbname);
         $connection->set_charset("utf8mb4");
+
     } catch (Exception $e) {
         header("Location: index.php?page=500");
+        exit;
     }
 ?>

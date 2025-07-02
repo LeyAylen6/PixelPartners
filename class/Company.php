@@ -9,6 +9,11 @@ class Company {
     $query = "SELECT * FROM `company`";
     $companies = [];
 
+    if (!$connection) {
+      header("Location: index.php?page=500");
+      exit;
+    }
+
     try {
       $result = mysqli_query($connection, $query);
       
