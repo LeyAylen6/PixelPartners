@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $project->developers = [];
 
         $user = new User();
-        echo '<pre>' . $_POST['developers'] . '</pre>';
        
         foreach ($_POST['developers'] as $dev_name) {
             $user_dev = $user->findByName($connection, trim($dev_name));

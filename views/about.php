@@ -1,9 +1,7 @@
 <?php
 require_once "class/User.php";
 require_once "class/db/mysqli.php";
-
-$user = new User();
-$team = $user->findAll($connection);
+require_once "process/get-workers.php";
 
 $values = [
   'Innovación constante',
@@ -41,15 +39,15 @@ $values = [
   <article class="mt-5">
     <h2 class="title">Nuestro Equipo</h2>
     <ul class="d-flex flex-wrap justify-content-center gap-3">
-      <?php foreach($team as $user): ?>
+      <?php foreach($workers as $worker): ?>
       <li class="bg-white rounded-5 p-2 shadow col-2 d-flex flex-column align-items-center">
-        <img class="w-75" src="<?= $user->image ?>" alt="<?= $user->name ?>" class="team-photo" loading="lazy">
+        <img class="w-75" src="<?= $worker->image ?>" alt="<?= $worker->name ?>" class="team-photo" loading="lazy">
         <div class="pt-2">
           <h3 class="text-center fs-5">
-            <?= $user->name ?>
+            <?= $worker->name ?>
           </h3>
           <p class="text-muted text-center">
-            <?= $user->rol ?>
+            <?= $worker->job ?>
           </p>
         </div>
       </li>

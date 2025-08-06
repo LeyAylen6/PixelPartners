@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 30, 2025 at 04:59 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-08-2025 a las 04:46:58
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `parcial_2`
+-- Base de datos: `parcial_2`
 --
 DROP DATABASE IF EXISTS `parcial_2`;
 CREATE DATABASE IF NOT EXISTS `parcial_2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
@@ -27,10 +27,9 @@ USE `parcial_2`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company`
+-- Estructura de tabla para la tabla `company`
 --
 
-DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE `company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `company`
+-- Volcado de datos para la tabla `company`
 --
 
 INSERT INTO `company` (`id`, `name`, `logo`) VALUES
@@ -52,26 +51,24 @@ INSERT INTO `company` (`id`, `name`, `logo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project`
+-- Estructura de tabla para la tabla `project`
 --
 
-DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR65YEzIyWYsitjDXZ5-pHhKqj21jdvydPvkw&s',
   `link` varchar(255) DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `project`
+-- Volcado de datos para la tabla `project`
 --
 
 INSERT INTO `project` (`id`, `name`, `description`, `image`, `link`, `company_id`) VALUES
 (1, 'Sushi Chatbot', 'Proyecto que implementa un chatbot para un restaurante de sushi, utilizando inteligencia artificial de Cohere para responder preguntas frecuentes de manera más interactiva y dinámica', 'https://github.com/LeyAylen6/sushi-chatbot/raw/main/client/src/assets/home.jpeg', 'https://sushi-chatbot.vercel.app/', NULL),
-(2, 'Paycash - People', ' Implementa una API RESTful para gestionar un catálogo de personas, permitiendo realizar operaciones CRUD.', 'https://github.com/LeyAylen6/paycash/raw/main/client/assets/paycash-people.jpeg', 'https://paycash-seven.vercel.app/', NULL),
 (3, 'PokePage', 'Pokedex en la que puedes revisar todos los pokemons con sus detalles, las distintas pokedex, regiones y peliculas de pokemon', 'https://github.com/Nacho077/Nacho077/raw/main/assets/img/PokePage.png', 'https://nacho077.github.io/', NULL),
 (4, 'Henry Videogames', ' En este proyecto puedes ver más de 100 juegos en diferentes páginas, buscar juegos por nombre, ver su descripción, filtrarlos por ubicación, ordenarlos en orden Ascendente, Descendente o por su Rating.', 'https://github.com/LeyAylen6/Videogames/raw/main/assets/landing.gif', 'https://henry-videogames-zeta.vercel.app/', 5),
 (5, 'Henry World Web', 'Version web de Henry World en la que los administradores y profesores pueden realizar cambios de una manera comoda y con mayor rapidez.', 'https://ignacio-gimenez.vercel.app/static/media/Henry-World-Web.7f3e6e3cca52bad067ba.png', 'https://henry-app.vercel.app/', 5),
@@ -84,33 +81,34 @@ INSERT INTO `project` (`id`, `name`, `description`, `image`, `link`, `company_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Estructura de tabla para la tabla `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `name` varchar(32) NOT NULL,
   `email` varchar(64) NOT NULL,
-  `image` varchar(256) NOT NULL,
+  `image` varchar(256) NOT NULL DEFAULT 'https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg',
   `id` int(11) NOT NULL,
-  `rol` varchar(32) NOT NULL
+  `job` varchar(32) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`name`, `email`, `image`, `id`, `rol`) VALUES
-('Leila Salguero', 'leiisalguero@gmail.com', 'https://avatars.githubusercontent.com/u/75590409?v=4', 1, 'Backend Developer Ssr'),
-('Ignacio Gimenez', 'ignaciogimenez70@gmail.com', 'https://ignacio-gimenez.vercel.app/static/media/profile.6c1887699f4fa9a49bb7.png', 2, 'Backend Developer Sr');
+INSERT INTO `user` (`name`, `email`, `image`, `id`, `job`, `password`, `rol`) VALUES
+('Leila Salguero', 'leiisalguero@gmail.com', 'https://avatars.githubusercontent.com/u/75590409?v=4', 1, 'Backend Developer Ssr', '$2y$10$N/mAt2Cbh8iMo5JBlnOcmOT/alc550YyTZf8XevPv/fYreUOiAfUe', 'user'),
+('Ignacio Gimenez', 'ignaciogimenez70@gmail.com', 'https://ignacio-gimenez.vercel.app/static/media/profile.6c1887699f4fa9a49bb7.png', 2, 'Backend Developer Sr', '$2y$10$s7D5EWaYJ8WtvK2.6HmwEu4Pb/pEQ/guoI4/0qY2jEDlqoFVgtwsu', 'admin'),
+('admin', 'admin@admin', 'https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg', 3, '', '$2y$10$f6zpCHc7B6vfVg.90ADUFOiXWzDHvHgibgheUneQ2hrZu8Zzgab9q', 'admin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_project`
+-- Estructura de tabla para la tabla `user_project`
 --
 
-DROP TABLE IF EXISTS `user_project`;
 CREATE TABLE `user_project` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -118,12 +116,11 @@ CREATE TABLE `user_project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user_project`
+-- Volcado de datos para la tabla `user_project`
 --
 
 INSERT INTO `user_project` (`id`, `user_id`, `project_id`) VALUES
 (1, 1, 1),
-(2, 1, 2),
 (3, 2, 3),
 (4, 1, 4),
 (5, 2, 5),
@@ -136,30 +133,30 @@ INSERT INTO `user_project` (`id`, `user_id`, `project_id`) VALUES
 (12, 2, 10);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `company`
+-- Indices de la tabla `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `project`
+-- Indices de la tabla `project`
 --
 ALTER TABLE `project`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_company_id` (`company_id`);
 
 --
--- Indexes for table `user`
+-- Indices de la tabla `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_project`
+-- Indices de la tabla `user_project`
 --
 ALTER TABLE `user_project`
   ADD PRIMARY KEY (`id`),
@@ -167,45 +164,45 @@ ALTER TABLE `user_project`
   ADD KEY `fk_project_id` (`project_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `company`
+-- AUTO_INCREMENT de la tabla `company`
 --
 ALTER TABLE `company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `project`
+-- AUTO_INCREMENT de la tabla `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `user_project`
+-- AUTO_INCREMENT de la tabla `user_project`
 --
 ALTER TABLE `user_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `project`
+-- Filtros para la tabla `project`
 --
 ALTER TABLE `project`
   ADD CONSTRAINT `fk_company_id` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`);
 
 --
--- Constraints for table `user_project`
+-- Filtros para la tabla `user_project`
 --
 ALTER TABLE `user_project`
   ADD CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),

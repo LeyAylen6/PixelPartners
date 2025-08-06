@@ -106,7 +106,6 @@ $currentPage = isset($_GET['project_page']) ? (int)$_GET['project_page'] : 1;
                                 </h4>
                                 <ul class="p-0">
                                     <?php
-
                                     if($project->developers): 
                                         foreach ($project->developers as $developer): ?>
                                             <li class="d-flex align-items-center my-2">
@@ -116,7 +115,7 @@ $currentPage = isset($_GET['project_page']) ? (int)$_GET['project_page'] : 1;
                                                         <?= htmlspecialchars($developer->name) ?> -
                                                     </span>
                                                     <span class="text-bg-light text-muted rounded"> 
-                                                        <?= htmlspecialchars($developer->rol) ?>
+                                                        <?= htmlspecialchars($developer->job) ?>
                                                     </span>
                                                 </div>
                                             </li>
