@@ -12,7 +12,7 @@ $users = $user->findAll($connection);
 } ?> 
 
 <article class="p-0 m-0 my-5 row justify-content-center">
-    <div class="col-11 col-xl-8 card shadow p-4">
+    <div class="col-11 col-xl-8 card shadow p-4 vh-55">
         <h2 class="mb-4 text-center">Gestión de usuarios</h2>
         <div class="table-responsive">
             <table class="table table-bordered table-hover align-middle">

@@ -64,7 +64,7 @@ body {
 }
 
 .vh-55 {
-  height: 55vh;
+  min-height: 55vh;
 }
 
 /* Cards */

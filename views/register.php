@@ -28,7 +28,7 @@
                     <div class="mb-4">
                         <label for="email" class="form-label">Email</label>
                         <input 
-                        type="text" 
+                        type="email" 
                         class="form-control form-control-lg" 
                         id="email" 
                         name="email"               

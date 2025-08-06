@@ -1,6 +1,6 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+<div class="container my-5">
+  <div class="row justify-content-center vh-55">
+    <div class="col-md-6 col-lg-5 shadow p-5 rounded-4 border-0">
       <h2 class="mb-4 text-center">Iniciar Sesión</h2>
 
       <?php if (isset($_GET["error"])) { 
@@ -12,7 +12,7 @@
           <div class="mb-4">
             <label for="email" class="form-label">Correo electrónico</label>
             <input 
-              type="text" 
+              type="email" 
               class="form-control form-control-lg" 
               id="email" 
               name="email" 
